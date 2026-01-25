@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp"
+    android:background="#FAFAFA"
+    android:id="@+id/main">
+
+    <!-- PROFİL ICON -->
+    <ImageView
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_person_soft"
+        android:background="@drawable/bg_circle"
+        android:padding="20dp"
+        android:contentDescription="Profile" />
+
+    <!-- APP NAME -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MemoryMap"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        android:layout_marginTop="24dp" />
+
+    <!-- SUBTITLE -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anılarını haritada sakla"
+        android:textSize="14sp"
+        android:textColor="#757575"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="32dp" />
+
+    <!-- EMAIL -->
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_edittext"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textColorHint="#9E9E9E"
+        android:textColor="@color/black"
+        />
+
+    <!-- PASSWORD -->
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_edittext"
+        android:hint="@string/ifre"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColorHint="#9E9E9E"
+        android:textColor="@color/black"
+
+        />
+
+    <!-- LOGIN BUTTON -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_button"
+        android:elevation="4dp"
+        android:onClick="signInClick"
+        android:text="@string/giri_yap"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+    <!-- REGISTER ROW -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hesabın yok mu?"
+            android:textSize="14sp"
+            android:textColor="#757575" />
+
+        <TextView
+            android:id="@+id/tvRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="signUpClick"
+            android:text="  Şimdi kaydol"
+            android:textColor="#7FA99B"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
+

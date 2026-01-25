@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "203375901400",
+    "project_id": "memorymapfirebase",
+    "storage_bucket": "memorymapfirebase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203375901400:android:7e1f8bddb1dee3bae7b5ad",
+        "android_client_info": {
+          "package_name": "com.aleynasahin.memorymap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDmfW6T9RiPYY720uUkgXu6CJCXLCMHjU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
