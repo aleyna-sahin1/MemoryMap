@@ -4,4 +4,6 @@
     <string name="email">Email</string>
     <string name="ifre">Şifre</string>
     <string name="giri_yap">Giriş Yap</string>
+    <string name="logout">Çıkış yap</string>
+
 </resources>

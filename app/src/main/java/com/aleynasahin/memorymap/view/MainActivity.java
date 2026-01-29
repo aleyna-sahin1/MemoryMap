@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -42,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            Intent intent = new Intent(MainActivity.this,MapsActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 
     public void signInClick(View view) {
@@ -81,7 +89,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signUpClick(View view) {
+        email = binding.etEmail.getText().toString();
+        password = binding.etPassword.getText().toString();
+        if (email.isEmpty()&& password.isEmpty()) {
+            binding.etEmail.setError("Lütfen e-mail adresinizi giriniz");
+            binding.etPassword.setError("Lütfen şifrenizi giriniz");
 
+        } else if(email.isEmpty()){
+            binding.etEmail.setError("Lütfen e-mail adresinizi giriniz");
+
+        }else if(password.isEmpty()){
+            binding.etPassword.setError("Lütfen şifrenizi giriniz");
+        }
+        else {
+
+            mAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    Toast.makeText(MainActivity.this, "başarılı", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(MainActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 
 }

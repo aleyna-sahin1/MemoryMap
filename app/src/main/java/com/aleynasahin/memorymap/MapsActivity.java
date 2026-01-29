@@ -37,6 +37,7 @@ import com.aleynasahin.memorymap.databinding.DialogAddMemoryBinding;
 import com.aleynasahin.memorymap.model.Memory;
 import com.aleynasahin.memorymap.roomdb.MemoryDao;
 import com.aleynasahin.memorymap.roomdb.MemoryDatabase;
+import com.aleynasahin.memorymap.view.MainActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -45,6 +46,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.aleynasahin.memorymap.databinding.ActivityMapsBinding;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,6 +62,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
+    FirebaseAuth mAuth;
     private ActivityMapsBinding binding;
     private DialogAddMemoryBinding dialogBinding;
     private GoogleMap mMap;
@@ -133,9 +137,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                 }
         );
+        mAuth=FirebaseAuth.getInstance();
 
-
-
+    }
+    public void logoutClick(View view){
+        mAuth.signOut();
+        Intent intent = new Intent(MapsActivity.this, MainActivity.class);
+        startActivity(intent);
 
     }
     private void searchMemory(String query) {

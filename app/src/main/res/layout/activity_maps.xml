@@ -23,4 +23,20 @@
         android:iconifiedByDefault="false"
         android:queryHint="Anı bul" />
 
+    <ImageButton
+        android:id="@+id/btnLogout"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/bg_logout_button"
+        android:contentDescription="@string/logout"
+        android:elevation="6dp"
+        android:onClick="logoutClick"
+        android:scaleType="center"
+        android:src="@drawable/ic_logout"
+        tools:ignore="OnClick" />
+
+
 </FrameLayout>
