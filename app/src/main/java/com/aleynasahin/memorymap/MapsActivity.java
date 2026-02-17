@@ -141,9 +141,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
     public void logoutClick(View view){
-        mAuth.signOut();
-        Intent intent = new Intent(MapsActivity.this, MainActivity.class);
-        startActivity(intent);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Çıkış Yap")
+                .setMessage("Çıkış yapmak istediğine emin misin?")
+                .setCancelable(false)
+                .setPositiveButton("Evet", (dialog, which) -> {
+                    mAuth.signOut();
+                    Intent intent = new Intent(MapsActivity.this, MainActivity.class);
+                    startActivity(intent);
+                })
+                .setNegativeButton("Hayır", (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .show();
+
 
     }
     private void searchMemory(String query) {
@@ -346,6 +358,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
 
     }
+
 
     private void showAddMemoryDialog(LatLng latLng) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
