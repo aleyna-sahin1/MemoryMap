@@ -1,5 +1,6 @@
 package com.aleynasahin.memorymap;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MemoryDetailsActivity extends AppCompatActivity {
+    private FirestoreRepository firestoreRepository;
 
     private ActivityMemoryDetailsBinding binding;
     private Memory currentMemory;
@@ -55,6 +57,7 @@ public class MemoryDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        firestoreRepository = new FirestoreRepository();
     }
 
     private void getMemoryFromFirestore(String title, String note) {
@@ -89,7 +92,31 @@ public class MemoryDetailsActivity extends AppCompatActivity {
                     showPlaceholderImage();
                 });
     }
+    public void clear(View view) {
 
+        if (currentMemory == null || currentMemory.firestoreId == null) {
+            Toast.makeText(this, "Silinecek anı bulunamadı", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Anıyı sil")
+                .setMessage("Bu anıyı silmek istediğine emin misin?")
+                .setPositiveButton("Sil", (dialog, which) -> {
+
+                    firestoreRepository.deleteMemory(
+                            currentMemory.firestoreId,
+                            unused -> {
+                                Toast.makeText(this, "Anı silindi", Toast.LENGTH_SHORT).show();
+                                finish();
+                            },
+                            e -> Toast.makeText(this, "Silme başarısız: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                    );
+
+                })
+                .setNegativeButton("İptal", null)
+                .show();
+    }
     private void showMemoryDetails(Memory memory) {
         String coordinates = String.format("Koordinatlar: %.6f, %.6f",
                 memory.memoryLatitude, memory.memoryLongitude);
