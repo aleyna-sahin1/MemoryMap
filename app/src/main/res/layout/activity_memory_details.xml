@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7F7F5"
@@ -50,29 +51,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- PHOTO / HERO -->
         <androidx.cardview.widget.CardView
             android:id="@+id/photoCard"
             android:layout_width="0dp"
             android:layout_height="320dp"
             android:layout_marginTop="24dp"
+            app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="26dp"
             app:cardElevation="3dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:layout_constraintTop_toBottomOf="@id/textNote"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/textNote">
 
             <ImageView
                 android:id="@+id/imageMemory"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
                 android:background="#E6E6E3"
-                android:contentDescription="Memory photo" />
+                android:contentDescription="Memory photo"
+                android:scaleType="centerCrop" />
+
         </androidx.cardview.widget.CardView>
 
-        <!-- META -->
+
         <TextView
             android:id="@+id/textCoordinates"
             android:layout_width="wrap_content"
@@ -87,6 +88,26 @@
             android:background="#EFEFEA"
             app:layout_constraintTop_toBottomOf="@id/photoCard"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/bg_button_warm"
+            android:elevation="4dp"
+            android:onClick="clear"
+            android:text="Anıyı Sil "
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photoCard"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

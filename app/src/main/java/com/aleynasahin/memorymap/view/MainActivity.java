@@ -15,6 +15,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.aleynasahin.memorymap.MapsActivity;
 import com.aleynasahin.memorymap.R;
 import com.aleynasahin.memorymap.databinding.ActivityMainBinding;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -41,6 +44,20 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        SupportMapFragment loginMapFragment = (SupportMapFragment)
+                getSupportFragmentManager().findFragmentById(R.id.loginMap);
+
+        if (loginMapFragment != null) {
+            loginMapFragment.getMapAsync(googleMap -> {
+
+                googleMap.getUiSettings().setAllGesturesEnabled(false);
+                googleMap.getUiSettings().setZoomControlsEnabled(false);
+
+                LatLng defaultLocation = new LatLng(41.0082, 28.9784);
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 13));
+
+            });
+        }
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();

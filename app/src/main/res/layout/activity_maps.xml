@@ -18,10 +18,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_marginTop="40dp"
-        android:background="@android:color/white"
+        android:background="@drawable/bg_button_outline_warm"
         android:elevation="5dp"
         android:iconifiedByDefault="false"
-        android:queryHint="Anı bul" />
+        android:queryHint="Anı bul"
+        android:textColor="#9A7060"/>
 
     <ImageButton
         android:id="@+id/btnLogout"
@@ -30,13 +31,16 @@
         android:layout_gravity="bottom|end"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="70dp"
-        android:background="@drawable/bg_logout_button"
+        android:background="@drawable/bg_button_outline_warm"
         android:contentDescription="@string/logout"
         android:elevation="6dp"
         android:onClick="logoutClick"
         android:scaleType="center"
         android:src="@drawable/ic_logout"
-        tools:ignore="OnClick" />
+        tools:ignore="OnClick"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
+
 
 
 </FrameLayout>
